@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Number Pack ලබාගැනීම</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>ඔබට නම්බර් පැක් එකක් ලබා ගැනීමට, දැන්වීම් 10ක් බලන්න!</h2>
+    <p>ඔබ දැන්වීම් බලපු ගණන: <span id="counter">0</span> / 10</p>
+
+    <button id="adBtn">📺 දැන්වීම බලන්න</button>
+    <button id="getBtn" disabled>📦 නම්බර් පැක් එක ලබා ගන්න</button>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const adsterraLink = "https://www.profitableratecpm.com/a2nptk96?key=91c055d3a643bd0dcc6b8e07f1368a43";
+
+    let count = parseInt(localStorage.getItem('adViewCount')) || 0;
+    const counter = document.getElementById('counter');
+    const adBtn = document.getElementById('adBtn');
+    const getBtn = document.getElementById('getBtn');
+    const message = document.getElementById('message');
+
+    counter.textContent = count;
+
+    if (count >= 10) {
+      getBtn.disabled = false;
+      message.textContent = "🎉 ඔබ දැන් Number Pack එක ලබා ගත හැක!";
+    }
+
+    adBtn.addEventListener('click', () => {
+      window.open(adsterraLink, "_blank");
+
+      count++;
+      localStorage.setItem('adViewCount', count);
+      counter.textContent = count;
+
+      if (count >= 10) {
+        getBtn.disabled = false;
+        message.textContent = "🎉 ඔබ දැන් Number Pack එක ලබා ගත හැක!";
+      } else {
+        message.textContent = `කරුණාකර තවත් දැන්වීම් ${10 - count}ක් බලන්න.`;
+      }
+    });
+
+    getBtn.addEventListener('click', () => {
+      // Click කිරීමෙන් පසුවත් ඒම ad එක open වෙනවා
+      window.open(adsterraLink, "_blank");
+      alert("ඔබට ලබා දෙන Number Pack එක: 📱 *123*1#");
+    });
+  </script>
+
+</body>
+</html>
